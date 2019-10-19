@@ -1,5 +1,5 @@
 # Derived from official mysql image (our base image)
-FROM mysql
+FROM bitnami/mysql:5.7.28
 
 # Add a database
 ENV MYSQL_DATABASE tournamentManager
