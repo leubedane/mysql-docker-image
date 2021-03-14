@@ -1,5 +1,10 @@
+CREATE DATABASE IF NOT EXISTS tournamentManager
+    CHARACTER SET utf8;
 
--- Exportiere Struktur von Tabelle mktt_sonntag_test.bezirkekreise
+USE tournamentManager;
+
+
+-- Exportiere Struktur von Tabelle mktt_sonntag_dev.bezirkekreise
 CREATE TABLE IF NOT EXISTS `bezirkekreise` (
   `BeKr_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `BeKr_Wert` varchar(10) DEFAULT NULL,
