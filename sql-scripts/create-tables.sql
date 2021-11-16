@@ -16,6 +16,15 @@ CREATE TABLE IF NOT EXISTS `bezirkekreise` (
   KEY `Idx1_bezirkekreise` (`BeKr_Club`,`BeKr_Verband`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9126 DEFAULT CHARSET=utf8;
 
+
+CREATE TABLE IF NOT EXISTS `matchtable` (
+                                            `id` char(50) NOT NULL,
+                                            `tableId` int(10) NOT NULL,
+                                            `matchId` int(10) NOT NULL,
+                                            `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                                            PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 -- Exportiere Daten aus Tabelle mktt_sonntag_test.bezirkekreise: ~8.964 rows (ungefähr)
 DELETE FROM `bezirkekreise`;
 /*!40000 ALTER TABLE `bezirkekreise` DISABLE KEYS */;
@@ -12169,4 +12178,5 @@ INSERT INTO `typeperplayer` (`typl_id`, `typl_play_id`, `typl_type_id`, `typl_se
 	(397, 126, 8, 0, 0, '2019-10-25 19:22:00', 0, NULL),
 	(398, 127, 8, 0, 0, '2019-10-25 19:22:00', 0, NULL);
 /*!40000 ALTER TABLE `typeperplayer` ENABLE KEYS */;
+
 
