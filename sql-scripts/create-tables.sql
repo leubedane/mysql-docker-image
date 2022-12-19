@@ -3452,8 +3452,3 @@ select (case when (`t1`.`Type_ID` <> `t2`.`Type_ID`) then concat(`t1`.`Type_Name
             else `t2`.`Type_clickTTCompetition` end)                                                                  AS `type_clickttcompetition`
 from (`type` `t1` left join `type` `t2` on ((`t2`.`Type_ID` = `t1`.`Type_Parenttype_ID`)));
 
-/*!40103 SET TIME_ZONE = IFNULL(@OLD_TIME_ZONE, 'system') */;
-/*!40101 SET SQL_MODE = IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS = IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
-/*!40101 SET CHARACTER_SET_CLIENT = @OLD_CHARACTER_SET_CLIENT */;
-/*!40111 SET SQL_NOTES = IFNULL(@OLD_SQL_NOTES, 1) */;
