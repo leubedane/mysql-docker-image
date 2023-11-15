@@ -3451,4 +3451,3 @@ select (case when (`t1`.`Type_ID` <> `t2`.`Type_ID`) then concat(`t1`.`Type_Name
             when isnull(`t2`.`Type_ID`) then `t1`.`Type_clickTTCompetition`
             else `t2`.`Type_clickTTCompetition` end)                                                                  AS `type_clickttcompetition`
 from (`type` `t1` left join `type` `t2` on ((`t2`.`Type_ID` = `t1`.`Type_Parenttype_ID`)));
-

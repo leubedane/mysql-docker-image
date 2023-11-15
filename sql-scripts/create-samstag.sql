@@ -1,10 +1,3 @@
--- --------------------------------------------------------
--- Host:                         127.0.0.1
--- Server Version:               5.7.40-log - MySQL Community Server (GPL)
--- Server Betriebssystem:        Win64
--- HeidiSQL Version:             12.3.0.6589
--- --------------------------------------------------------
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET NAMES utf8 */;
 /*!50503 SET NAMES utf8mb4 */;
@@ -16,8 +9,8 @@
 
 
 -- Exportiere Datenbank Struktur für mktt_albgau_test_23_samstag
-CREATE DATABASE IF NOT EXISTS `mktt_albgau_test_23_samstag` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `mktt_albgau_test_23_samstag`;
+CREATE DATABASE IF NOT EXISTS `samstag_test` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `samstag_test`;
 
 -- Exportiere Struktur von Tabelle mktt_albgau_test_23_samstag.bezirkekreise
 CREATE TABLE IF NOT EXISTS `bezirkekreise` (
@@ -11390,8 +11383,3 @@ CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `view_teamttr` AS select ro
 DROP TABLE IF EXISTS `view_types3`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `view_types3` AS select (case when (`t1`.`Type_ID` <> `t2`.`Type_ID`) then concat(`t1`.`Type_Name`,' ') else '' end) AS `OrgTypeName`,`t1`.`Type_ID` AS `type_id`,(case when isnull(`t2`.`Type_ID`) then `t1`.`Type_ID` else `t2`.`Type_ID` end) AS `MainTypeID`,(case when isnull(`t2`.`Type_ID`) then `t1`.`Type_Kind` else `t2`.`Type_Kind` end) AS `type_kind`,(case when isnull(`t2`.`Type_ID`) then `t1`.`Type_Clas_id` else `t2`.`Type_Clas_id` end) AS `type_clas_id`,(case when isnull(`t2`.`Type_ID`) then `t1`.`Type_Name` else `t2`.`Type_Name` end) AS `type_name`,(case when isnull(`t2`.`Type_ID`) then `t1`.`Type_StartTime` else `t2`.`Type_StartTime` end) AS `type_StartTime`,(case when isnull(`t2`.`Type_ID`) then `t1`.`Type_groups` else `t2`.`Type_groups` end) AS `Type_groups`,(case when isnull(`t2`.`Type_ID`) then `t1`.`Type_System` else `t2`.`Type_System` end) AS `Type_System`,(case when isnull(`t2`.`Type_ID`) then `t1`.`Type_Sex` else `t2`.`Type_Sex` end) AS `Type_Sex`,(case when isnull(`t2`.`Type_ID`) then `t1`.`Type_AgeFrom` else `t2`.`Type_AgeFrom` end) AS `Type_AgeFrom`,(case when isnull(`t2`.`Type_ID`) then `t1`.`Type_AgeTo` else `t2`.`Type_AgeTo` end) AS `Type_AgeTo`,(case when isnull(`t2`.`Type_ID`) then `t1`.`Type_YearFrom` else `t2`.`Type_YearFrom` end) AS `Type_YearFrom`,(case when isnull(`t2`.`Type_ID`) then `t1`.`Type_YearTo` else `t2`.`Type_YearTo` end) AS `Type_YearTo`,(case when isnull(`t2`.`Type_ID`) then `t1`.`Type_TTRFrom` else `t2`.`Type_TTRFrom` end) AS `Type_TTRFrom`,(case when isnull(`t2`.`Type_ID`) then `t1`.`Type_TTRTo` else `t2`.`Type_TTRTo` end) AS `Type_TTRTo`,(case when isnull(`t2`.`Type_ID`) then `t1`.`Type_TTRRemarks` else `t2`.`Type_TTRRemarks` end) AS `Type_TTRRemarks`,(case when isnull(`t2`.`Type_ID`) then `t1`.`Type_clickTTCompetition` else `t2`.`Type_clickTTCompetition` end) AS `type_clickttcompetition` from (`type` `t1` left join `type` `t2` on((`t2`.`Type_ID` = `t1`.`Type_Parenttype_ID`)));
 
-/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
-/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
