@@ -11,14 +11,11 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Exportiere Datenbank Struktur für mktt_demo
-CREATE DATABASE IF NOT EXISTS tournamentManager
-    CHARACTER SET utf8;
-
-USE tournamentManager;
+CREATE DATABASE IF NOT EXISTS `tournamentManager` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
+USE `tournamentManager`;
 
 
 -- Exportiere Struktur von Tabelle mktt_demo.bezirkekreise
-DROP TABLE IF EXISTS `bezirkekreise`;
 CREATE TABLE IF NOT EXISTS `bezirkekreise` (
   `BeKr_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `BeKr_Wert` varchar(10) DEFAULT NULL,
@@ -8838,7 +8835,6 @@ INSERT INTO `bezirkekreise` (`BeKr_ID`, `BeKr_Wert`, `BeKr_Club`, `BeKr_Bezirk`,
 
 
 -- Exportiere Struktur von Tabelle mktt_demo.cashjournal
-DROP TABLE IF EXISTS `cashjournal`;
 CREATE TABLE IF NOT EXISTS `cashjournal` (
   `Cash_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `Cash_Club_ID` int(10) unsigned DEFAULT NULL,
@@ -8857,7 +8853,6 @@ DELETE FROM `cashjournal`;
 
 
 -- Exportiere Struktur von Tabelle mktt_demo.club
-DROP TABLE IF EXISTS `club`;
 CREATE TABLE IF NOT EXISTS `club` (
   `Club_ID` int(10) NOT NULL AUTO_INCREMENT,
   `Club_Name` varchar(255) DEFAULT NULL,
@@ -8968,7 +8963,6 @@ INSERT INTO `club` (`Club_ID`, `Club_Name`, `Club_Verband`, `Club_ShortName`, `C
 
 
 -- Exportiere Struktur von Tabelle mktt_demo.doubles
-DROP TABLE IF EXISTS `doubles`;
 CREATE TABLE IF NOT EXISTS `doubles` (
   `Doub_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `Doub_Play1_ID` int(10) unsigned NOT NULL,
@@ -8987,7 +8981,7 @@ CREATE TABLE IF NOT EXISTS `doubles` (
   PRIMARY KEY (`Doub_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Exportiere Daten aus Tabelle mktt_demo.doubles: ~37 rows (ungefähr)
+-- Exportiere Daten aus Tabelle mktt_demo.doubles: ~34 rows (ungefähr)
 DELETE FROM `doubles`;
 /*!40000 ALTER TABLE `doubles` DISABLE KEYS */;
 INSERT INTO `doubles` (`Doub_ID`, `Doub_Play1_ID`, `Doub_Play2_ID`, `Doub_Type_ID`, `Doub_Kind`, `Doub_Timestamp`, `Doub_Paid`, `Doub_Play1_Name`, `Doub_Play2_Name`, `Doub_Play1_FirstName`, `Doub_Play2_FirstName`, `Doub_Seed`, `Doub_ExternalID`, `Doub_StartNr`) VALUES
@@ -9032,7 +9026,6 @@ INSERT INTO `doubles` (`Doub_ID`, `Doub_Play1_ID`, `Doub_Play2_ID`, `Doub_Type_I
 
 
 -- Exportiere Struktur von Tabelle mktt_demo.grouprounds
-DROP TABLE IF EXISTS `grouprounds`;
 CREATE TABLE IF NOT EXISTS `grouprounds` (
   `GrRo_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `GrRo_GroupSize` int(11) DEFAULT NULL,
@@ -9049,7 +9042,6 @@ DELETE FROM `grouprounds`;
 
 
 -- Exportiere Struktur von Tabelle mktt_demo.groupschedule
-DROP TABLE IF EXISTS `groupschedule`;
 CREATE TABLE IF NOT EXISTS `groupschedule` (
   `gsch_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `gsch_GroupSize` int(11) DEFAULT NULL,
@@ -9747,7 +9739,6 @@ INSERT INTO `groupschedule` (`gsch_ID`, `gsch_GroupSize`, `gsch_RoundNumber`, `g
 
 
 -- Exportiere Struktur von Tabelle mktt_demo.handicap
-DROP TABLE IF EXISTS `handicap`;
 CREATE TABLE IF NOT EXISTS `handicap` (
   `hand_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `hand_QTTRdifference` int(11) DEFAULT NULL,
@@ -9776,7 +9767,6 @@ INSERT INTO `handicap` (`hand_ID`, `hand_QTTRdifference`, `hand_timestamp`, `han
 
 
 -- Exportiere Struktur von Tabelle mktt_demo.kind
-DROP TABLE IF EXISTS `kind`;
 CREATE TABLE IF NOT EXISTS `kind` (
   `Kind_ID` int(10) NOT NULL AUTO_INCREMENT,
   `Kind_Name` varchar(255) DEFAULT NULL,
@@ -9796,7 +9786,6 @@ INSERT INTO `kind` (`Kind_ID`, `Kind_Name`, `Kind_Timestamp`) VALUES
 
 
 -- Exportiere Struktur von Tabelle mktt_demo.lastchange
-DROP TABLE IF EXISTS `lastchange`;
 CREATE TABLE IF NOT EXISTS `lastchange` (
   `last_ID` int(11) NOT NULL AUTO_INCREMENT,
   `last_TableName` varchar(50) DEFAULT NULL,
@@ -9812,7 +9801,6 @@ DELETE FROM `lastchange`;
 
 
 -- Exportiere Struktur von Tabelle mktt_demo.masterdataplayer
-DROP TABLE IF EXISTS `masterdataplayer`;
 CREATE TABLE IF NOT EXISTS `masterdataplayer` (
   `VereinNummer` int(6) unsigned NOT NULL DEFAULT 0,
   `NuNummer` varchar(10) NOT NULL DEFAULT '',
@@ -9843,7 +9831,6 @@ DELETE FROM `masterdataplayer`;
 
 
 -- Exportiere Struktur von Tabelle mktt_demo.matches
-DROP TABLE IF EXISTS `matches`;
 CREATE TABLE IF NOT EXISTS `matches` (
   `Matc_Play1_ID` int(10) DEFAULT NULL,
   `Matc_Play2_ID` int(10) DEFAULT NULL,
@@ -10212,8 +10199,22 @@ INSERT INTO `matches` (`Matc_Play1_ID`, `Matc_Play2_ID`, `Matc_IsPlaying`, `Matc
 /*!40000 ALTER TABLE `matches` ENABLE KEYS */;
 
 
+-- Exportiere Struktur von Tabelle mktt_demo.matchtable
+CREATE TABLE IF NOT EXISTS `matchtable` (
+  `id` char(50) NOT NULL,
+  `tableId` int(10) NOT NULL,
+  `matchId` int(10) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+
+-- Exportiere Daten aus Tabelle mktt_demo.matchtable: ~0 rows (ungefähr)
+DELETE FROM `matchtable`;
+/*!40000 ALTER TABLE `matchtable` DISABLE KEYS */;
+/*!40000 ALTER TABLE `matchtable` ENABLE KEYS */;
+
+
 -- Exportiere Struktur von Tabelle mktt_demo.matchtype
-DROP TABLE IF EXISTS `matchtype`;
 CREATE TABLE IF NOT EXISTS `matchtype` (
   `MaTy_ID` int(10) NOT NULL AUTO_INCREMENT,
   `MaTy_Name` varchar(255) DEFAULT NULL,
@@ -10280,7 +10281,6 @@ INSERT INTO `matchtype` (`MaTy_ID`, `MaTy_Name`, `MaTy_Timestamp`, `MaTy_Player`
 
 
 -- Exportiere Struktur von Tabelle mktt_demo.platzierungen
-DROP TABLE IF EXISTS `platzierungen`;
 CREATE TABLE IF NOT EXISTS `platzierungen` (
   `plat_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `plat_position` int(10) unsigned NOT NULL,
@@ -10301,7 +10301,6 @@ DELETE FROM `platzierungen`;
 
 
 -- Exportiere Struktur von Tabelle mktt_demo.player
-DROP TABLE IF EXISTS `player`;
 CREATE TABLE IF NOT EXISTS `player` (
   `Play_ID` int(10) NOT NULL AUTO_INCREMENT,
   `Play_FirstName` varchar(255) DEFAULT NULL,
@@ -10530,7 +10529,6 @@ INSERT INTO `player` (`Play_ID`, `Play_FirstName`, `Play_LastName`, `Play_Type_I
 
 
 -- Exportiere Struktur von Tabelle mktt_demo.playerpergroup
-DROP TABLE IF EXISTS `playerpergroup`;
 CREATE TABLE IF NOT EXISTS `playerpergroup` (
   `PPGr_ID` int(10) NOT NULL AUTO_INCREMENT,
   `PPGr_Play_ID` int(10) DEFAULT NULL,
@@ -10821,7 +10819,6 @@ INSERT INTO `playerpergroup` (`PPGr_ID`, `PPGr_Play_ID`, `PPGr_Grou_ID`, `PPGr_T
 
 
 -- Exportiere Struktur von Tabelle mktt_demo.playerpermatch
-DROP TABLE IF EXISTS `playerpermatch`;
 CREATE TABLE IF NOT EXISTS `playerpermatch` (
   `PPMa_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `PPMa_Team_ID` int(10) unsigned NOT NULL,
@@ -10840,7 +10837,6 @@ DELETE FROM `playerpermatch`;
 
 
 -- Exportiere Struktur von Tabelle mktt_demo.playerperteam
-DROP TABLE IF EXISTS `playerperteam`;
 CREATE TABLE IF NOT EXISTS `playerperteam` (
   `PPTe_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `PPTe_Team_ID` int(10) unsigned NOT NULL,
@@ -10858,7 +10854,6 @@ DELETE FROM `playerperteam`;
 
 
 -- Exportiere Struktur von Tabelle mktt_demo.playgroups
-DROP TABLE IF EXISTS `playgroups`;
 CREATE TABLE IF NOT EXISTS `playgroups` (
   `Grou_ID` int(10) NOT NULL AUTO_INCREMENT,
   `Grou_Name` varchar(255) DEFAULT NULL,
@@ -10955,7 +10950,6 @@ INSERT INTO `playgroups` (`Grou_ID`, `Grou_Name`, `Grou_Tour_ID`, `Grou_Timestam
 
 
 -- Exportiere Struktur von Tabelle mktt_demo.playsystem
-DROP TABLE IF EXISTS `playsystem`;
 CREATE TABLE IF NOT EXISTS `playsystem` (
   `ID` int(10) NOT NULL AUTO_INCREMENT,
   `TypeID` int(10) DEFAULT NULL,
@@ -10972,8 +10966,27 @@ DELETE FROM `playsystem`;
 /*!40000 ALTER TABLE `playsystem` ENABLE KEYS */;
 
 
+-- Exportiere Struktur von Tabelle mktt_demo.play_evolutions
+CREATE TABLE IF NOT EXISTS `play_evolutions` (
+  `id` int(11) NOT NULL,
+  `hash` varchar(255) NOT NULL,
+  `applied_at` timestamp NOT NULL,
+  `apply_script` mediumtext DEFAULT NULL,
+  `revert_script` mediumtext DEFAULT NULL,
+  `state` varchar(255) DEFAULT NULL,
+  `last_problem` mediumtext DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Exportiere Daten aus Tabelle mktt_demo.play_evolutions: ~0 rows (ungefähr)
+DELETE FROM `play_evolutions`;
+/*!40000 ALTER TABLE `play_evolutions` DISABLE KEYS */;
+INSERT INTO `play_evolutions` (`id`, `hash`, `applied_at`, `apply_script`, `revert_script`, `state`, `last_problem`) VALUES
+	(1, 'e31b108dd895cce3c2962ecb8d8a180cbdd68d21', '2023-11-17 12:09:45', 'CREATE TABLE IF NOT EXISTS `matchtable` (\n`id` char(50) NOT NULL,\n`tableId` int(10) NOT NULL,\n`matchId` int(10) NOT NULL,\n`timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,\nPRIMARY KEY (`id`)\n) ENGINE=InnoDB DEFAULT CHARSET=utf8;', 'DROP TABLE IF EXISTS `matchtable`;', 'applied', '');
+/*!40000 ALTER TABLE `play_evolutions` ENABLE KEYS */;
+
+
 -- Exportiere Struktur von Tabelle mktt_demo.schedule
-DROP TABLE IF EXISTS `schedule`;
 CREATE TABLE IF NOT EXISTS `schedule` (
   `Sche_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `Sche_Date` datetime DEFAULT NULL,
@@ -10997,7 +11010,6 @@ DELETE FROM `schedule`;
 
 
 -- Exportiere Struktur von Tabelle mktt_demo.settings
-DROP TABLE IF EXISTS `settings`;
 CREATE TABLE IF NOT EXISTS `settings` (
   `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `Name` varchar(45) NOT NULL,
@@ -11006,7 +11018,7 @@ CREATE TABLE IF NOT EXISTS `settings` (
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Exportiere Daten aus Tabelle mktt_demo.settings: ~27 rows (ungefähr)
+-- Exportiere Daten aus Tabelle mktt_demo.settings: ~26 rows (ungefähr)
 DELETE FROM `settings`;
 /*!40000 ALTER TABLE `settings` DISABLE KEYS */;
 INSERT INTO `settings` (`ID`, `Name`, `Timestamp`, `Value`) VALUES
@@ -11036,12 +11048,11 @@ INSERT INTO `settings` (`ID`, `Name`, `Timestamp`, `Value`) VALUES
 	(30, 'OrganizerClubName', '2023-11-15 14:26:44', ''),
 	(31, 'OrganizerClubNr', '2023-11-15 14:26:44', ''),
 	(32, 'OrganizerClubFed', '2023-11-15 14:26:44', ''),
-	(33, 'DBBackup', '2023-11-15 14:33:36', '15.11.2023 14:33:36');
+	(33, 'DBBackup', '2023-11-15 14:33:36', '15.11.2023 22:21:19');
 /*!40000 ALTER TABLE `settings` ENABLE KEYS */;
 
 
 -- Exportiere Struktur von Tabelle mktt_demo.tables
-DROP TABLE IF EXISTS `tables`;
 CREATE TABLE IF NOT EXISTS `tables` (
   `Tabl_ID` int(10) NOT NULL AUTO_INCREMENT,
   `Tabl_Name` varchar(255) DEFAULT NULL,
@@ -11145,7 +11156,6 @@ INSERT INTO `tables` (`Tabl_ID`, `Tabl_Name`, `Tabl_Group`, `Tabl_Left`, `Tabl_T
 
 
 -- Exportiere Struktur von Tabelle mktt_demo.team
-DROP TABLE IF EXISTS `team`;
 CREATE TABLE IF NOT EXISTS `team` (
   `team_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `team_Name` varchar(100) NOT NULL,
@@ -11164,7 +11174,6 @@ DELETE FROM `team`;
 
 
 -- Exportiere Struktur von Tabelle mktt_demo.teamsystem
-DROP TABLE IF EXISTS `teamsystem`;
 CREATE TABLE IF NOT EXISTS `teamsystem` (
   `TeSy_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `TeSy_Name` varchar(100) NOT NULL,
@@ -11211,7 +11220,6 @@ INSERT INTO `teamsystem` (`TeSy_ID`, `TeSy_Name`, `TeSy_PlayerCount`, `TeSy_Play
 
 
 -- Exportiere Struktur von Tabelle mktt_demo.teamsystemmatches
-DROP TABLE IF EXISTS `teamsystemmatches`;
 CREATE TABLE IF NOT EXISTS `teamsystemmatches` (
   `TeSM_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `TeSM_TeSy_ID` int(10) unsigned NOT NULL,
@@ -11460,7 +11468,6 @@ INSERT INTO `teamsystemmatches` (`TeSM_ID`, `TeSM_TeSy_ID`, `TeSM_Round`, `TeSM_
 
 
 -- Exportiere Struktur von Tabelle mktt_demo.tournament
-DROP TABLE IF EXISTS `tournament`;
 CREATE TABLE IF NOT EXISTS `tournament` (
   `Tour_ID` int(10) NOT NULL AUTO_INCREMENT,
   `Tour_Name` varchar(255) DEFAULT NULL,
@@ -11476,7 +11483,7 @@ CREATE TABLE IF NOT EXISTS `tournament` (
   PRIMARY KEY (`Tour_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Exportiere Daten aus Tabelle mktt_demo.tournament: ~1 rows (ungefähr)
+-- Exportiere Daten aus Tabelle mktt_demo.tournament: ~0 rows (ungefähr)
 DELETE FROM `tournament`;
 /*!40000 ALTER TABLE `tournament` DISABLE KEYS */;
 INSERT INTO `tournament` (`Tour_ID`, `Tour_Name`, `Tour_Date`, `Tour_TableCount`, `Tour_PrintSchiri`, `Tour_UseThirdPlace`, `Tour_DisplayTables`, `Tour_DisplayPos`, `Tour_PrintSchiriFormat`, `Tour_Timestamp`, `Tour_Verband`) VALUES
@@ -11485,7 +11492,6 @@ INSERT INTO `tournament` (`Tour_ID`, `Tour_Name`, `Tour_Date`, `Tour_TableCount`
 
 
 -- Exportiere Struktur von Tabelle mktt_demo.type
-DROP TABLE IF EXISTS `type`;
 CREATE TABLE IF NOT EXISTS `type` (
   `Type_ID` int(10) NOT NULL AUTO_INCREMENT,
   `Type_Name` varchar(255) DEFAULT NULL,
@@ -11548,7 +11554,6 @@ INSERT INTO `type` (`Type_ID`, `Type_Name`, `Type_Kind`, `Type_Syst_ID`, `Type_C
 
 
 -- Exportiere Struktur von Tabelle mktt_demo.typeperplayer
-DROP TABLE IF EXISTS `typeperplayer`;
 CREATE TABLE IF NOT EXISTS `typeperplayer` (
   `typl_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `typl_play_id` int(10) unsigned NOT NULL,
@@ -11890,7 +11895,6 @@ INSERT INTO `typeperplayer` (`typl_id`, `typl_play_id`, `typl_type_id`, `typl_se
 
 
 -- Exportiere Struktur von View mktt_demo.view_allplayers5
-DROP VIEW IF EXISTS `view_allplayers5`;
 -- Erstelle temporäre Tabelle um View Abhängigkeiten zuvorzukommen
 CREATE TABLE `view_allplayers5` (
 	`PlayerID` DECIMAL(11,0) NOT NULL,
@@ -11916,7 +11920,6 @@ CREATE TABLE `view_allplayers5` (
 
 
 -- Exportiere Struktur von View mktt_demo.view_doubleplayers
-DROP VIEW IF EXISTS `view_doubleplayers`;
 -- Erstelle temporäre Tabelle um View Abhängigkeiten zuvorzukommen
 CREATE TABLE `view_doubleplayers` (
 	`DoubleID` INT(10) UNSIGNED NOT NULL,
@@ -11925,7 +11928,6 @@ CREATE TABLE `view_doubleplayers` (
 
 
 -- Exportiere Struktur von View mktt_demo.view_groups
-DROP VIEW IF EXISTS `view_groups`;
 -- Erstelle temporäre Tabelle um View Abhängigkeiten zuvorzukommen
 CREATE TABLE `view_groups` (
 	`PPGr_ID` INT(10) NOT NULL,
@@ -11985,7 +11987,6 @@ CREATE TABLE `view_groups` (
 
 
 -- Exportiere Struktur von View mktt_demo.view_kampflos
-DROP VIEW IF EXISTS `view_kampflos`;
 -- Erstelle temporäre Tabelle um View Abhängigkeiten zuvorzukommen
 CREATE TABLE `view_kampflos` (
 	`PlayerID` INT(11) NULL,
@@ -11994,7 +11995,6 @@ CREATE TABLE `view_kampflos` (
 
 
 -- Exportiere Struktur von View mktt_demo.view_matchesplayer
-DROP VIEW IF EXISTS `view_matchesplayer`;
 -- Erstelle temporäre Tabelle um View Abhängigkeiten zuvorzukommen
 CREATE TABLE `view_matchesplayer` (
 	`matchid` INT(11) NOT NULL,
@@ -12004,7 +12004,6 @@ CREATE TABLE `view_matchesplayer` (
 
 
 -- Exportiere Struktur von View mktt_demo.view_matchesplayerall
-DROP VIEW IF EXISTS `view_matchesplayerall`;
 -- Erstelle temporäre Tabelle um View Abhängigkeiten zuvorzukommen
 CREATE TABLE `view_matchesplayerall` (
 	`MatchID` INT(11) NOT NULL,
@@ -12014,7 +12013,6 @@ CREATE TABLE `view_matchesplayerall` (
 
 
 -- Exportiere Struktur von View mktt_demo.view_notpaid
-DROP VIEW IF EXISTS `view_notpaid`;
 -- Erstelle temporäre Tabelle um View Abhängigkeiten zuvorzukommen
 CREATE TABLE `view_notpaid` (
 	`ID` INT(10) UNSIGNED NOT NULL,
@@ -12029,7 +12027,6 @@ CREATE TABLE `view_notpaid` (
 
 
 -- Exportiere Struktur von View mktt_demo.view_notplayed
-DROP VIEW IF EXISTS `view_notplayed`;
 -- Erstelle temporäre Tabelle um View Abhängigkeiten zuvorzukommen
 CREATE TABLE `view_notplayed` (
 	`matc_id` INT(10) NOT NULL,
@@ -12047,7 +12044,6 @@ CREATE TABLE `view_notplayed` (
 
 
 -- Exportiere Struktur von View mktt_demo.view_playerperclub
-DROP VIEW IF EXISTS `view_playerperclub`;
 -- Erstelle temporäre Tabelle um View Abhängigkeiten zuvorzukommen
 CREATE TABLE `view_playerperclub` (
 	`PlayerCount` BIGINT(21) NOT NULL,
@@ -12056,7 +12052,6 @@ CREATE TABLE `view_playerperclub` (
 
 
 -- Exportiere Struktur von View mktt_demo.view_players
-DROP VIEW IF EXISTS `view_players`;
 -- Erstelle temporäre Tabelle um View Abhängigkeiten zuvorzukommen
 CREATE TABLE `view_players` (
 	`PlayerID` INT(11) NULL,
@@ -12065,7 +12060,6 @@ CREATE TABLE `view_players` (
 
 
 -- Exportiere Struktur von View mktt_demo.view_playing2
-DROP VIEW IF EXISTS `view_playing2`;
 -- Erstelle temporäre Tabelle um View Abhängigkeiten zuvorzukommen
 CREATE TABLE `view_playing2` (
 	`PlayerID` DECIMAL(11,0) NULL
@@ -12073,7 +12067,6 @@ CREATE TABLE `view_playing2` (
 
 
 -- Exportiere Struktur von View mktt_demo.view_playingsingle2
-DROP VIEW IF EXISTS `view_playingsingle2`;
 -- Erstelle temporäre Tabelle um View Abhängigkeiten zuvorzukommen
 CREATE TABLE `view_playingsingle2` (
 	`PlayerID` DECIMAL(10,0) NULL
@@ -12081,7 +12074,6 @@ CREATE TABLE `view_playingsingle2` (
 
 
 -- Exportiere Struktur von View mktt_demo.view_teamclub
-DROP VIEW IF EXISTS `view_teamclub`;
 -- Erstelle temporäre Tabelle um View Abhängigkeiten zuvorzukommen
 CREATE TABLE `view_teamclub` (
 	`VerbandName` VARCHAR(91) NULL COLLATE 'utf8mb4_general_ci',
@@ -12091,7 +12083,6 @@ CREATE TABLE `view_teamclub` (
 
 
 -- Exportiere Struktur von View mktt_demo.view_teamttr
-DROP VIEW IF EXISTS `view_teamttr`;
 -- Erstelle temporäre Tabelle um View Abhängigkeiten zuvorzukommen
 CREATE TABLE `view_teamttr` (
 	`AvgTTR` DOUBLE(17,0) NULL,
@@ -12100,7 +12091,6 @@ CREATE TABLE `view_teamttr` (
 
 
 -- Exportiere Struktur von View mktt_demo.view_types3
-DROP VIEW IF EXISTS `view_types3`;
 -- Erstelle temporäre Tabelle um View Abhängigkeiten zuvorzukommen
 CREATE TABLE `view_types3` (
 	`OrgTypeName` VARCHAR(256) NULL COLLATE 'utf8mb4_general_ci',
@@ -12125,105 +12115,90 @@ CREATE TABLE `view_types3` (
 
 
 -- Exportiere Struktur von View mktt_demo.view_allplayers5
-DROP VIEW IF EXISTS `view_allplayers5`;
 -- Entferne temporäre Tabelle und erstelle die eigentliche View
 DROP TABLE IF EXISTS `view_allplayers5`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `view_allplayers5` AS select Play_ID as PlayerID, Play_FirstName as FirstName, Play_LastName as LastName, concat(Play_LastName, ', ', play_FirstNameShort) as Name, concat(Play_LastName, ', ', play_FirstName) as FullName, concat(play_FirstName, ' ', Play_LastName) as FullName2, Play_BirthDate as BirthYear, play_club_id as ClubID, play_location as Ort, club_Kreis as Kreis, club_bezirk as Bezirk, club_Verband as Verband, club_Region as Region, club_Name as Club, cast(case when coalesce(play_startnr, 0) = 0 then '' else play_startnr end as char) as StartNr1, cast('' as char) as StartNr2, play_TTR as TTR, play_ID as Player1ID, 0 as Player2ID from player left join club on play_club_id = club_id UNION ALL select (Doub_ID+100000) as PlayerID, concat(P1.Play_LastName, ' ', substr(P1.Play_FirstName, 1, 1), '.') AS FirstName, concat(P2.Play_LastName, ' ', substr(P2.Play_FirstName, 1, 1), '.') AS LastName, concat(P1.Play_LastName, ' ', substr(P1.Play_FirstName, 1, 1), './', P2.Play_LastName, ' ', substr(P2.Play_FirstName, 1, 1), '.') AS Name, concat(P1.Play_LastName, ' ', P1.Play_FirstName, '/', P2.Play_LastName, ' ', P2.Play_FirstName) AS FullName, concat(P1.Play_FirstName, ' ', P1.Play_LastName, '/', P2.Play_FirstName, ' ', P2.Play_LastName) AS FullName2, NULL as BirthYear, 0 as ClubID, '' as Ort, case when C1.club_Kreis = C2.club_Kreis then C1.club_Kreis else concat(C1.club_Kreis, ' / ', C2.club_Kreis) end as Kreis, case when C1.club_Bezirk = C2.club_Bezirk then C1.club_Bezirk else concat(C1.club_Bezirk, ' / ', C2.club_Bezirk) end as Bezirk, case when C1.club_verband = C2.club_verband then C1.club_verband else concat(C1.club_verband, '/', C2.club_verband) end as Verband, '' as Region, case when C1.club_id = C2.club_id then C1.club_Name else concat(C1.club_Name, ' / ', C2.club_Name) end as Club, cast(case when coalesce(P1.play_startnr, 0) = 0 then '' else P1.play_startnr end as char) as StartNr1, cast(case when coalesce(P2.play_startnr, 0) = 0 then '' else P2.play_startnr end as char) as StartNr2, P1.play_TTR+P2.play_TTR as TTR, P1.play_ID as Player1ID, P2.play_ID as Player2ID from doubles inner join player P1 on doub_play1_id = p1.play_id inner join player P2 on doub_play2_id = p2.play_id inner join club C1   on C1.club_id=P1.play_club_id inner join club C2   on C2.club_id=P2.play_club_id UNION ALL select (team_id + 1000000) as PlayerID, '' as FirstName, team_name as LastName, team_name as Name, team_name as FullName, team_name as FullName2, NULL as BirthYear, team_club_ID as ClubID, '' as Ort, club_Kreis as Kreis, club_bezirk as Bezirk, coalesce(club_Verband, VerbandName) as Verband, club_Region as Region, coalesce(club_Name, ClubName) as Club, '' as StartNr1, '' as StartNr2, AvgTTR as TTR, 0 as Player1ID, 0 as Player2ID from Team left join club on team_club_id = club_id  and length(club_name)>0 left join view_TeamTTR on team_id=TeamID left join view_TeamClub tc on tc.TeamID=team_id UNION ALL select distinct 0 as PlayerID, '' as FirstName, '' as LastName, '' as Name, '' as FullName, '' as FullName2, NULL as BirthYear, 0 as ClubID, '' as Ort, '' as Kreis, '' as Bezirk, '' as Verband, '' as Region, '' as Club, '' as StartNr1, '' as StartNr2, 0 as TTR, 0 as Player1ID, 0 as Player2ID from dual UNION ALL select distinct -1 as PlayerID, '' as FirstName, '' as LastName, '' as Name, '' as FullName, '' as FullName2, NULL as BirthYear, 0 as ClubID, '' as Ort, '' as Kreis, '' as Bezirk, '' as Verband, '' as Region, '' as Club, '' as StartNr1, '' as StartNr2, 0 as TTR, 0 as Player1ID, 0 as Player2ID from dual ;
 
 
 -- Exportiere Struktur von View mktt_demo.view_doubleplayers
-DROP VIEW IF EXISTS `view_doubleplayers`;
 -- Entferne temporäre Tabelle und erstelle die eigentliche View
 DROP TABLE IF EXISTS `view_doubleplayers`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `view_doubleplayers` AS select doub_id as DoubleID, doub_play1_id as PlayerID from doubles     UNION ALL select doub_id as DoubleID, doub_play2_id as PlayerID from doubles order by DoubleID ;
 
 
 -- Exportiere Struktur von View mktt_demo.view_groups
-DROP VIEW IF EXISTS `view_groups`;
 -- Entferne temporäre Tabelle und erstelle die eigentliche View
 DROP TABLE IF EXISTS `view_groups`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `view_groups` AS select * from playerpergroup inner join playgroups on grou_id=ppgr_grou_id ;
 
 
 -- Exportiere Struktur von View mktt_demo.view_kampflos
-DROP VIEW IF EXISTS `view_kampflos`;
 -- Entferne temporäre Tabelle und erstelle die eigentliche View
 DROP TABLE IF EXISTS `view_kampflos`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `view_kampflos` AS select case when matc_winner_id = matc_play1_id then matc_play2_id else matc_play1_id end as PlayerID, matc_type_id as TypeID from matches where matc_played = 1 and matc_kampflos <> 0 ;
 
 
 -- Exportiere Struktur von View mktt_demo.view_matchesplayer
-DROP VIEW IF EXISTS `view_matchesplayer`;
 -- Entferne temporäre Tabelle und erstelle die eigentliche View
 DROP TABLE IF EXISTS `view_matchesplayer`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `view_matchesplayer` AS select matchid, playerid,  case when playerid < 100000 then 1       when playerid BETWEEN 100000 AND 1000000 then 2       when playerid > 1000000 then 4 END as TypeKind from view_MatchesPlayerAll  inner join type on typeId=type_id and type_active=1 ;
 
 
 -- Exportiere Struktur von View mktt_demo.view_matchesplayerall
-DROP VIEW IF EXISTS `view_matchesplayerall`;
 -- Entferne temporäre Tabelle und erstelle die eigentliche View
 DROP TABLE IF EXISTS `view_matchesplayerall`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `view_matchesplayerall` AS select Matc_ID AS MatchID, Matc_Play1_ID AS PlayerID, Matc_type_ID as TypeID from matches union all select Matc_ID AS MatchID, Matc_Play2_ID AS PlayerID, Matc_type_ID as TypeID from matches union all select Matc_ID AS MatchID, PlayerID AS PlayerID, Matc_type_ID as TypeID from  matches join view_doubleplayers on DoubleID =Matc_Play1_ID - 100000 UNION ALL select Matc_ID AS MatchID, PlayerID AS PlayerID, Matc_type_ID as TypeID from matches join view_doubleplayers on DoubleID =Matc_Play2_ID - 100000 ;
 
 
 -- Exportiere Struktur von View mktt_demo.view_notpaid
-DROP VIEW IF EXISTS `view_notpaid`;
 -- Entferne temporäre Tabelle und erstelle die eigentliche View
 DROP TABLE IF EXISTS `view_notpaid`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `view_notpaid` AS SELECT typl_id as ID, 	   Name,        Club,        typl_play_id as PlayerID,        type_id as TypeID,        type_startgebuehr,        type_nachmeldegebuehr,        type_kind FROM typeperplayer      inner join type on typl_type_id = type_id      inner join view_allplayers5 on PlayerID=typl_play_id where typl_paid = 0 and       type_kind = 1 UNION select team_id as ID, 	   Name,        club,        team_id as PlayerID,        type_id as TypeID,        type_startgebuehr,        type_nachmeldegebuehr,        type_kind from Team inner join Type on team_type_id=type_id inner join view_allplayers5 on PlayerID=team_id+1000000 where team_paid = 0 and       type_kind = 4 ;
 
 
 -- Exportiere Struktur von View mktt_demo.view_notplayed
-DROP VIEW IF EXISTS `view_notplayed`;
 -- Entferne temporäre Tabelle und erstelle die eigentliche View
 DROP TABLE IF EXISTS `view_notplayed`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `view_notplayed` AS select matches.Matc_ID AS matc_id,(case when (type.Type_Kind = 1) then 1 else 0 end) AS Einzel,(case when (type.Type_Kind = 2) then 2 else 0 end) AS  Doppel,(case when (type.Type_Kind = 3) then 4 else 0 end) AS Mixed,matches.Matc_Play1_ID AS Matc_Play1_ID,matches.Matc_Play2_ID AS Matc_Play2_ID,d1.Doub_Play1_ID AS  Doub1Play1,d1.Doub_Play2_ID AS Doub1Play2,d2.Doub_Play1_ID AS Doub2Play1,d2.Doub_Play2_ID AS Doub2Play2,type.Type_Kind AS type_kind from (((matches join type on((type.Type_ID =  matches.Matc_Type_ID))) left join doubles d1 on((d1.Doub_ID = (matches.Matc_Play1_ID - 100000)))) left join doubles d2 on((d2.Doub_ID = (matches.Matc_Play2_ID - 100000)))) where  (matches.Matc_Played = 0) group by matches.Matc_Play1_ID,matches.Matc_Play2_ID,type.Type_Kind ;
 
 
 -- Exportiere Struktur von View mktt_demo.view_playerperclub
-DROP VIEW IF EXISTS `view_playerperclub`;
 -- Entferne temporäre Tabelle und erstelle die eigentliche View
 DROP TABLE IF EXISTS `view_playerperclub`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `view_playerperclub` AS select count(1) AS PlayerCount,p.Play_Club_ID AS club_id from ((player p join typeperplayer on((typeperplayer.typl_play_id = p.Play_ID))) join type on(((typeperplayer.typl_type_id = type.Type_ID) and (type.Type_Kind = 1)))) where (type.Type_Kind = 1) group by p.Play_Club_ID ;
 
 
 -- Exportiere Struktur von View mktt_demo.view_players
-DROP VIEW IF EXISTS `view_players`;
 -- Entferne temporäre Tabelle und erstelle die eigentliche View
 DROP TABLE IF EXISTS `view_players`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `view_players` AS select matches.Matc_Play1_ID AS PlayerID,MainTypeID AS TypeID from matches inner join view_types3 on matc_type_id=type_id where ((matches.Matc_Play1_ID > 0) and (matches.Matc_Play2_ID > 0))  union select matches.Matc_Play2_ID AS PlayerID,MainTypeID AS TypeID from matches inner join view_types3 on matc_type_id=type_id where ((matches.Matc_Play1_ID > 0) and (matches.Matc_Play2_ID > 0)) group by  matches.Matc_Play2_ID,MainTypeID ;
 
 
 -- Exportiere Struktur von View mktt_demo.view_playing2
-DROP VIEW IF EXISTS `view_playing2`;
 -- Entferne temporäre Tabelle und erstelle die eigentliche View
 DROP TABLE IF EXISTS `view_playing2`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `view_playing2` AS select PlayerID AS PlayerID from view_playingsingle2 union select (doubles.Doub_ID + 100000) AS PlayerID from view_playingsingle2      inner join doubles on doubles.Doub_Play1_ID = PlayerID where PlayerID < 100000 union select (doubles.Doub_ID + 100000) AS PlayerID from view_playingsingle2      inner join doubles on doubles.Doub_Play2_ID = PlayerID where PlayerID < 100000 ;
 
 
 -- Exportiere Struktur von View mktt_demo.view_playingsingle2
-DROP VIEW IF EXISTS `view_playingsingle2`;
 -- Entferne temporäre Tabelle und erstelle die eigentliche View
 DROP TABLE IF EXISTS `view_playingsingle2`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `view_playingsingle2` AS select Matc_Play1_ID AS PlayerID from matches where (Matc_Tabl_ID > 0) union all select Matc_Play2_ID AS PlayerID from matches where (Matc_Tabl_ID > 0) union all select Doub_Play1_ID AS PlayerID from matches inner join doubles on Matc_Play1_ID-100000=Doub_ID where (Matc_Tabl_ID > 0) and (Matc_Play1_ID > 100000) UNION ALL select Doub_Play2_ID AS PlayerID from matches inner join doubles on Matc_Play1_ID-100000=Doub_ID where (Matc_Tabl_ID > 0) and (Matc_Play1_ID > 100000) UNION ALL select Doub_Play1_ID AS PlayerID from matches inner join doubles on Matc_Play2_ID-100000=Doub_ID where (Matc_Tabl_ID > 0) and (Matc_Play2_ID > 100000) UNION ALL select Doub_Play2_ID AS PlayerID from matches inner join doubles on Matc_Play2_ID-100000=Doub_ID where (Matc_Tabl_ID > 0) and (Matc_Play2_ID > 100000) ;
 
 
 -- Exportiere Struktur von View mktt_demo.view_teamclub
-DROP VIEW IF EXISTS `view_teamclub`;
 -- Entferne temporäre Tabelle und erstelle die eigentliche View
 DROP TABLE IF EXISTS `view_teamclub`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `view_teamclub` AS select      case when max(club_verband)=min(club_verband) then max(club_verband) else concat(Max(club_verband), '/', min(club_verband))   end          AS VerbandName,      case when max(club_id)=min(club_id) then max(club_name) else concat(Max(club_name), '/', min(club_name))   end          AS ClubName, ppte_team_id as TeamID from playerperteam inner join player on play_id=ppte_play_id inner join club on club_id=play_club_id group by ppte_team_id ;
 
 
 -- Exportiere Struktur von View mktt_demo.view_teamttr
-DROP VIEW IF EXISTS `view_teamttr`;
 -- Entferne temporäre Tabelle und erstelle die eigentliche View
 DROP TABLE IF EXISTS `view_teamttr`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `view_teamttr` AS select round(avg (play_ttr), 0) as AvgTTR,         ppte_team_id as TeamID  from player       inner join playerperteam on play_id = ppte_play_id and play_ttr > 0  group by ppte_team_id ;
 
 
 -- Exportiere Struktur von View mktt_demo.view_types3
-DROP VIEW IF EXISTS `view_types3`;
 -- Entferne temporäre Tabelle und erstelle die eigentliche View
 DROP TABLE IF EXISTS `view_types3`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `view_types3` AS select case when t1.type_id<>t2.type_id then  concat(t1.type_name, ' ') else '' end as OrgTypeName, t1.type_id as type_id, case when t2.type_id is null then t1.type_id else t2.type_id end as MainTypeID, case when t2.type_id is null then t1.type_kind else t2.type_kind end as type_kind, case when t2.type_id is null then t1.type_clas_id else t2.type_clas_id end as type_clas_id, case when t2.type_id is null then t1.type_name else t2.type_name end as type_name, case when t2.type_id is null then t1.type_StartTime else t2.type_StartTime end as type_StartTime, case when t2.type_id is null then t1.Type_groups else t2.Type_groups end as Type_groups, case when t2.type_id is null then t1.Type_System else t2.Type_System end as Type_System, case when t2.type_id is null then t1.Type_Sex else t2.Type_Sex end as Type_Sex, case when t2.type_id is null then t1.Type_AgeFrom else t2.Type_AgeFrom end as Type_AgeFrom, case when t2.type_id is null then t1.Type_AgeTo else t2.Type_AgeTo end as Type_AgeTo, case when t2.type_id is null then t1.Type_YearFrom else t2.Type_YearFrom end as Type_YearFrom, case when t2.type_id is null then t1.Type_YearTo else t2.Type_YearTo end as Type_YearTo, case when t2.type_id is null then t1.Type_TTRFrom else t2.Type_TTRFrom end as Type_TTRFrom, case when t2.type_id is null then t1.Type_TTRTo else t2.Type_TTRTo end as Type_TTRTo, case when t2.type_id is null then t1.Type_TTRRemarks else t2.Type_TTRRemarks end as Type_TTRRemarks, case when t2.type_id is null then t1.type_clickttcompetition else t2.type_clickttcompetition end as type_clickttcompetition from 	type t1 	left join type t2 on t2.type_id=t1.type_parenttype_id ;
