@@ -2,7 +2,7 @@
 FROM mariadb:11.8
 
 # Add a database
-ENV MARIADB_DATABASE tournamentManager
+ENV MARIADB_DATABASE=tournamentManager
 
 # Add the content of the sql-scripts/ directory to your image
 # All scripts in docker-entrypoint-initdb.d/ are automatically
