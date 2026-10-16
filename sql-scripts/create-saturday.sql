@@ -9,8 +9,8 @@
 
 
 -- Exportiere Datenbank Struktur für mktt_albgau_test_23_samstag
-CREATE DATABASE IF NOT EXISTS `samstag_test` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `samstag_test`;
+CREATE DATABASE IF NOT EXISTS `saturday_test` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `saturday_test`;
 
 -- Exportiere Struktur von Tabelle mktt_albgau_test_23_samstag.bezirkekreise
 CREATE TABLE IF NOT EXISTS `bezirkekreise` (
@@ -10192,9 +10192,9 @@ INSERT INTO `tables` (`Tabl_ID`, `Tabl_Name`, `Tabl_Group`, `Tabl_Left`, `Tabl_T
 	(10, '8', NULL, 380, '2020-01-03 16:29:24', 110, NULL, 1),
 	(11, '13', NULL, 380, '2020-01-03 16:29:24', 210, NULL, 1),
 	(12, '18', NULL, 380, '2020-01-03 16:29:24', 310, NULL, 1),
-	(13, '21', NULL, 20, '2020-01-03 16:29:24', 410, NULL, 1),
-	(14, '22', NULL, 200, '2020-01-03 16:29:24', 410, NULL, 1),
-	(15, '23', NULL, 380, '2020-01-03 16:29:24', 410, NULL, 1),
+	(13, '0', NULL, 20, '2020-01-03 16:29:24', 410, NULL, 1),
+	(14, '0', NULL, 200, '2020-01-03 16:29:24', 410, NULL, 1),
+	(15, '0', NULL, 380, '2020-01-03 16:29:24', 410, NULL, 1),
 	(16, '0', NULL, 20, '2020-01-03 16:29:24', 510, NULL, 1),
 	(17, '0', NULL, 200, '2020-01-03 16:29:24', 510, NULL, 1),
 	(18, '0', NULL, 380, '2020-01-03 16:29:24', 510, NULL, 1),
@@ -10202,7 +10202,7 @@ INSERT INTO `tables` (`Tabl_ID`, `Tabl_Name`, `Tabl_Group`, `Tabl_Left`, `Tabl_T
 	(20, '9', NULL, 560, '2020-01-03 16:29:24', 110, NULL, 1),
 	(21, '14', NULL, 560, '2020-01-03 16:29:24', 210, NULL, 1),
 	(22, '19', NULL, 560, '2020-01-03 16:29:24', 310, NULL, 1),
-	(23, '24', NULL, 560, '2020-01-03 16:29:24', 410, NULL, 1),
+	(23, '0', NULL, 560, '2020-01-03 16:29:24', 410, NULL, 1),
 	(24, '0', NULL, 560, '2020-01-03 16:29:24', 510, NULL, 1),
 	(25, '0', NULL, 20, '2020-01-03 16:29:24', 610, NULL, 1),
 	(26, '0', NULL, 200, '2020-01-03 16:29:24', 610, NULL, 1),

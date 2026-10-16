@@ -2,7 +2,7 @@
 FROM mariadb:13.0
 
 # Add a database
-ENV MARIADB_DATABASE=tournamentManager
+ENV MARIADB_DATABASE=sunday_test
 
 # Server config (case-insensitive table names for the Windows-exported dumps)
 COPY ./conf.d/ /etc/mysql/conf.d/
